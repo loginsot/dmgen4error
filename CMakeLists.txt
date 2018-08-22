@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-SET(DMPROJECT_NAME "dmgen")
+SET(DMPROJECT_NAME "dmgen_error")
 PROJECT(${DMPROJECT_NAME})
 
 IF (WIN32)  
