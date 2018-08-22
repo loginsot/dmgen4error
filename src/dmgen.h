@@ -71,8 +71,8 @@ class CDMGen : public CDMSafeSingleton<CDMGen> {
     virtual ~CDMGen();
 
     bool Init();
-    bool LoadError();
-  public:
+    bool LoadError(const std::string& strFile);
+public:
     // interface
     bool DoCommand( int argc, char* argv[] );
   public:
@@ -89,7 +89,7 @@ class CDMGen : public CDMSafeSingleton<CDMGen> {
 
     std::string m_strUserPath;
     std::string m_strProjectName;
-
+    std::string m_strXatFileName;
     CVecErrorCode m_vecErrorCode;
 };
 

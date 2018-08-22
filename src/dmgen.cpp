@@ -43,18 +43,14 @@ CDMGen::~CDMGen() {
 
 bool CDMGen::Init() {
     return true
-           && LoadError()
            && true;
 }
 
-bool CDMGen::LoadError() {
-    std::string strFileName = DMTPL_DMERROR_GetFileName( ETPLTYPE_ERRORCODE_XAT );
-    std::string strBuffer = DMTPL_DMERROR_GetData( ETPLTYPE_ERRORCODE_XAT );
-
+bool CDMGen::LoadError(const std::string& strFile) {
     xml_document doc;
 
-    if ( !doc.load_buffer( strBuffer.c_str(), strBuffer.size() ) ) {
-        DMLog( "xat file:%s is not exist\r\n", strFileName.c_str() );
+    if ( !doc.load_file(strFile.c_str(), parse_default, encoding_auto) ) {
+        DMLog( "xat file:%s is not exist\r\n", strFile.c_str() );
         return false;
     }
 
@@ -114,6 +110,7 @@ bool CDMGen::DoCommand( int argc, char* argv[] ) {
 
     const Arg_parser::Option options[] = {
         { 'p', "projectname",    Arg_parser::yes },
+        { 'x', "xatfilename",    Arg_parser::yes },
         { 'f', "force",    Arg_parser::no },
         { 0, 0,          Arg_parser::no }
     };
@@ -146,7 +143,23 @@ bool CDMGen::DoCommand( int argc, char* argv[] ) {
             m_strProjectName = arg;
         }
         break;
+        case 'x': {
+            const char* arg = parser.argument(argind).c_str();
 
+            if (NULL == arg) {
+                DMLog("Arg_parser %c failed\r\n", (char)code);
+                return false;
+            }
+
+            m_strXatFileName = arg;
+
+            if (!LoadError(m_strXatFileName))
+            {
+                DMLog("LoadError %s failed\r\n", m_strXatFileName.c_str());
+                return false;
+            }
+        }
+                  break;
         case 'f': {
             bForce = true;
         }
@@ -156,6 +169,12 @@ bool CDMGen::DoCommand( int argc, char* argv[] ) {
             DMLog( "Arg_parser %c failed\r\n", ( char )code );
             return false;
         }
+    }
+
+    if (m_strXatFileName.empty())
+    {
+        DMLog("need -x *.xat\r\n");
+        return false;
     }
 
     if ( m_strProjectName.empty() ) {
