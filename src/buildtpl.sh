@@ -1,2 +1,2 @@
 #!/bin/sh
-dmpackage -p tpl -n dmcmake
+./dmpackage -p tpl -n dmcmake
