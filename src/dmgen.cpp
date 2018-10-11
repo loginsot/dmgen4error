@@ -6,7 +6,7 @@
 
 #include "arg_parser.h"
 
-#include "strtk.hpp"
+#include "dmstrtk.hpp"
 
 #include "dmcmake_package_bin.h"
 #include "dmerror_package_bin.h"

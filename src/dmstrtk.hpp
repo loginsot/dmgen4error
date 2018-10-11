@@ -1,23 +1,6 @@
-/*
- *****************************************************************
- *                     String Toolkit Library                    *
- *                                                               *
- * Author: Arash Partow (2002-2013)                              *
- * URL: http://www.partow.net/programming/strtk/index.html       *
- *                                                               *
- * Copyright notice:                                             *
- * Free use of the String Toolkit Library is permitted under the *
- * guidelines and in accordance with the most current version of *
- * the Common Public License.                                    *
- * http://www.opensource.org/licenses/cpl1.0.php                 *
- *                                                               *
- *****************************************************************
-*/
 
-
-#ifndef INCLUDE_STRTK_HPP
-#define INCLUDE_STRTK_HPP
-
+#ifndef __DMSTRTK_H_INCLUDE__
+#define __DMSTRTK_H_INCLUDE__
 
 #include <algorithm>
 #include <cctype>
@@ -4637,15 +4620,15 @@ inline void convert_to_lowercase( std::string& str ) {
                                   str.size() ) ) );
 }
 
-inline std::string as_lowercase( const std::string& str ) {
+inline std::string as_lowercase(const std::string& str) {
     std::string result = str;
-    convert_to_lowercase( result );
+    std::transform(result.begin(), result.end(), result.begin(), ::tolower);
     return result;
 }
 
-inline std::string as_uppercase( const std::string& str ) {
+inline std::string as_uppercase(const std::string& str) {
     std::string result = str;
-    convert_to_uppercase( result );
+    std::transform(result.begin(), result.end(), result.begin(), ::toupper);
     return result;
 }
 
@@ -25500,4 +25483,4 @@ static inline std::string data() {
 
 } // namespace strtk
 
-#endif
+#endif // __DMSTRTK_H_INCLUDE__
