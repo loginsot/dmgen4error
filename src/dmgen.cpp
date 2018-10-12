@@ -184,7 +184,7 @@ bool CDMGen::DoCommand( int argc, char* argv[] ) {
     std::string strRoot = DMGetWorkPath() + PATH_DELIMITER + m_strProjectName;
 
     if ( !bForce ) {
-        if ( DMDirectoryExist( strRoot.c_str() ) ) {
+        if ( DMIsDirectory( strRoot.c_str() ) ) {
             DMLog( "project %s exist\r\n", strRoot.c_str() );
             return false;
         }
@@ -204,7 +204,7 @@ bool CDMGen::DoCommand( int argc, char* argv[] ) {
 		std::string strPath = strFullFilePath.substr(0,
 			strFullFilePath.rfind(PATH_DELIMITER));
 
-        DMDirectoryCreate( strPath.c_str(), true );
+        DMCreateDirectories( strPath.c_str());
 
 		ofsh.open(strFullFilePath,
                    std::ios::out | std::ios::binary );
