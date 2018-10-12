@@ -11,7 +11,7 @@
 # git submodule update --init --recursive
 #
 
-pushd ctemplate
+pushd thirdparty/ctemplate
 libtoolize && aclocal && autoheader && autoconf && automake --add-missing
 sh configure
 popd
