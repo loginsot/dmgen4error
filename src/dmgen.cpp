@@ -181,7 +181,7 @@ bool CDMGen::DoCommand( int argc, char* argv[] ) {
         m_strProjectName = "dmcmake";
     }
 
-    std::string strRoot = DMGetWorkPath() + PATH_DELIMITER + m_strProjectName;
+    std::string strRoot = DMGetWorkPath();
 
     if ( !bForce ) {
         if ( DMIsDirectory( strRoot.c_str() ) ) {
