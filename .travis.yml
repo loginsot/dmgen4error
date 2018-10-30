@@ -77,7 +77,7 @@ script:
   - cd ..
 
 after_success:
-  - "if [ -f bin/dmgen_errortest ] ; then bin/dmgen_errortest ; fi"
+  - "if [ -f bin/dmgen4errortest ] ; then bin/dmgen4errortest ; fi"
 
 after_failure:
   - echo failure
@@ -90,7 +90,7 @@ deploy:
   provider: releases
   api_key:
     secure: $GITHUB_ACCESS_TOKEN
-  file: bin/dmgen_error
+  file: bin/dmgen4errortest
   skip_cleanup: true
   on:
     branch: master

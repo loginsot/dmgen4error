@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # - install depends tools
 # yum -y install git
@@ -6,8 +6,8 @@
 #
 
 # - clone code
-# git clone https://github.com/brinkqiang/dmgen.git
-# pushd dmgen
+# git clone https://github.com/brinkqiang/dmgen4error.git
+# pushd dmgen4error
 # git submodule update --init --recursive
 #
 
@@ -20,7 +20,9 @@ rm -rf build
 mkdir build
 pushd build
 cmake -DCMAKE_BUILD_TYPE=relwithdebinfo ..
-make -j1
+cmake --build .
 popd
 
 # popd
+
+# echo continue && read -n 1
