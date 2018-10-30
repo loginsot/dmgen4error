@@ -4626,6 +4626,16 @@ inline std::string as_lowercase(const std::string& str) {
     return result;
 }
 
+inline std::string as_firstcase(const std::string& str) {
+    std::string result = str;
+    std::transform(result.begin(), result.end(), result.begin(), ::tolower);
+    if (!result.empty())
+    {
+        result.front() = ::toupper(result.front());
+    }
+    return result;
+}
+
 inline std::string as_uppercase(const std::string& str) {
     std::string result = str;
     std::transform(result.begin(), result.end(), result.begin(), ::toupper);
