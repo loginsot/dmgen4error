@@ -49,6 +49,9 @@
     (without whitespace), or '--<long_option>=<argument>'.
 */
 
+#ifndef __DMARGPARSER_H_INCLUDE__
+#define __DMARGPARSER_H_INCLUDE__
+
 class Arg_parser {
   public:
     enum Has_arg { no, yes, maybe };
@@ -111,3 +114,5 @@ class Arg_parser {
         }
     }
 };
+
+#endif // __DMARGPARSER_H_INCLUDE__
