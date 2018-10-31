@@ -1,2 +1,2 @@
-#!/bin/sh
-./dmgen_error -p dmerror -x errorcode.xat
+#!/bin/bash
+./dmgen4error -p dmerror -x errorcode.xat
